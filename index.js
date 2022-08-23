@@ -7,10 +7,29 @@ app.set('views', './views');
 app.set('view engine', 'ejs');
 app.use(bodyParser.urlencoded({ extended: true }));
 
+let id = 2
+
 app.get('/', (req, res) => {
     res.render('index')
 })
 
-app.listen(8080, () => {
-    console.log('Listening on port 8080');
+app.get('/albums', (req, res) => {
+    const albums = [
+        { artist: 'Cocteau Twins', album: 'Heaven or Las Vegas', year: 1990, id: 2 }, 
+        { artist: 'Bauhaus', album: 'Crackle', year: 1998, id: 1 }
+    ]
+    res.render('albums', {albums: albums})
 })
+
+app.post('/albums', (req, res) => {
+    res.render('albumRow', { ...req.body, id: ++id })
+})
+
+app.delete('/albums/:id', (req, res) => {
+    res.send('')
+})
+
+app.listen(8080, () => {
+    console.log('Listening on port 8080')
+})
+

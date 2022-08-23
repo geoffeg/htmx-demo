@@ -1,0 +1,6 @@
+<TR id="albums-<%= id %>">
+    <TD><%= album %></TD>
+    <TD><%= artist %></TD>
+    <TD><%= year %></TD>
+    <td><button hx-delete="/albums/<%= id %>" hx-target="#albums-<%= id %>">Delete</button></td>
+</TR>
