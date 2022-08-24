@@ -10,7 +10,7 @@ app.use(bodyParser.urlencoded({ extended: true }));
 let id = 2
 
 app.get('/', (req, res) => {
-    res.render('index')
+    res.redirect(301, '/one.html')
 })
 
 app.get('/albums', (req, res) => {
@@ -22,13 +22,14 @@ app.get('/albums', (req, res) => {
 })
 
 app.post('/albums', (req, res) => {
-    // res.render('albumsOob', { ...req.body, id: ++id, totalAlbums: id })
-   res.render('albumRow', { ...req.body, id: ++id })
+    //res.render('albumsOob', { ...req.body, id: ++id, totalAlbums: id })
+    res.render('albumRow', { ...req.body, id: ++id })
 })
 
 app.delete('/albums/:id', (req, res) => {
     id--
-    res.render('deleteAlbum', { count: id })
+    res.send()
+    //res.render('deleteAlbum', { count: id })
 })
 
 app.listen(8080, () => {
