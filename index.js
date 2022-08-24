@@ -22,11 +22,13 @@ app.get('/albums', (req, res) => {
 })
 
 app.post('/albums', (req, res) => {
-    res.render('albumRow', { ...req.body, id: ++id })
+    // res.render('albumsOob', { ...req.body, id: ++id, totalAlbums: id })
+   res.render('albumRow', { ...req.body, id: ++id })
 })
 
 app.delete('/albums/:id', (req, res) => {
-    res.send('')
+    id--
+    res.render('deleteAlbum', { count: id })
 })
 
 app.listen(8080, () => {

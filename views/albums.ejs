@@ -1,19 +1,14 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+    <meta name="htmx-config" content='{"useTemplateFragments":true}'>
     <script src="https://unpkg.com/htmx.org@1.8.0"></script>
     <title>My favorite albums</title>
     <meta charset="UTF-8" />
 </head>
 <body>
     <h1>My favorite albums</h1>
-    <form target="/albums" method="get" hx-post="/albums" hx-swap="afterbegin" hx-target="tbody">
-        <div><label>Artist: <input type="text" name="artist"/></label></div>
-        <div><label>Album: <input type="text" name="album"/></label></div>
-        <div><label>Year: <input type="text" name="year"/></label></div>
-        <div><input type="submit" value="Add album"/></div>
-    </form>
-
+    <%- include('albumsForm') %>
     <table>
         <thead>
             <tr>
@@ -29,5 +24,8 @@
             </tbody>
         </thead>
     </table>
+    <div id="totalAlbums">
+        <%- include('totalAlbums', { count: albums.length }) %>
+    </div>
 </body>
 </html>
