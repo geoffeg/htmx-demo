@@ -17,7 +17,7 @@
                 <th>Year released</th>
                 <th></th>
             </tr>
-            <tbody>
+            <tbody hx-target="closest tr" hx-swap="outerHTML">
                 <% albums.forEach((album) => { %>
                     <%- include('albumRow',album) %>
                 <% }) %>

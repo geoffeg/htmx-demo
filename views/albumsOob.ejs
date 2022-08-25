@@ -2,3 +2,6 @@
 <div id="totalAlbums" hx-swap-oob="true">
     <%- include('totalAlbums', { count: totalAlbums }) %>
 </div>
+<div hx-swap-oob="innerHTML:form">
+    <%- include('albumsForm') %>
+</div>
